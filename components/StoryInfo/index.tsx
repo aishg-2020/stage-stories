@@ -1,17 +1,27 @@
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 interface StoryInfoProps {
   profilePicture: string;
   userName: string;
-  timeAgo: string; 
+  timeAgo: string;
 }
 
-const StoryInfo: React.FC<StoryInfoProps> = ({ profilePicture, userName, timeAgo }) => {
+const StoryInfo: React.FC<StoryInfoProps> = ({
+  profilePicture,
+  userName,
+  timeAgo,
+}) => {
   return (
     <div className="story-info">
-    
-      <img src={profilePicture} alt={`${userName}'s profile`} className="profile-picture" />
-      
+      <Image
+        width={32}
+        height={32}
+        src={profilePicture}
+        alt={`${userName}'s profile`}
+        className="profile-picture"
+      />
+
       <div className="user-info">
         <div className="user-name">{userName}</div>
         <div className="time-ago">{timeAgo}</div>

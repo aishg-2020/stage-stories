@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProgressBarSegments from "../ProgressSegments";
 import StoryInfo from "../StoryInfo";
 import Image from "next/image";
+import ImageViewer from "../ImageViewer";
 
 interface Story {
   id: number;
@@ -108,15 +109,13 @@ const StoryViewer: React.FC<StoryViewerProps> = ({
         timeAgo="1h"
       />
 
-      <div
-        className="story-image"
-        style={{ backgroundImage: `url(${stories[currentStory].imageUrl})` }}
-        onTouchStart={handleMouseDown}
-        onTouchEnd={handleMouseUp}
-      >
-        <div className="story-nav prev" onClick={prevStory}></div>
-        <div className="story-nav next" onClick={nextStory}></div>
-      </div>
+      <ImageViewer
+        imageUrl={stories[currentStory].imageUrl}
+        prevStory={prevStory}
+        nextStory={nextStory}
+        handleMouseDown={handleMouseDown}
+        handleMouseUp={handleMouseUp}
+      />
 
       <Image
         src="/images/cross-icon.png"

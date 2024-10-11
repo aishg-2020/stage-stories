@@ -1,0 +1,56 @@
+import { useEffect, useState } from "react";
+
+interface ImageViewerProps {
+  imageUrl: string;
+  prevStory: () => void;
+  nextStory: () => void;
+  handleMouseDown: () => void;
+  handleMouseUp: () => void;
+}
+
+const ImageViewer: React.FC<ImageViewerProps> = ({
+  imageUrl,
+  prevStory,
+  nextStory,
+  handleMouseDown,
+  handleMouseUp,
+}) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      setLoading(false);
+    };
+
+    img.onerror = () => {
+      setLoading(false);
+    };
+
+    return () => {
+      setLoading(true);
+    };
+  }, [imageUrl]);
+
+  return (
+    <div className="story-image-wrapper">
+      {loading ? (
+        <div className="spinner"></div>
+      ) : (
+        <div
+          className="story-image"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+          onTouchStart={handleMouseDown}
+          onTouchEnd={handleMouseUp}
+        >
+          <div className="story-nav prev" onClick={prevStory}></div>
+          <div className="story-nav next" onClick={nextStory}></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ImageViewer;

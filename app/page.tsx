@@ -3,6 +3,7 @@ import { usersWithStories } from "../data"; // Assuming this imports the usersWi
 import StoryViewer from "../components/StoryViewer";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface Story {
   id: number;
@@ -59,8 +60,10 @@ export default function Home() {
         {usersWithStories.map((user: UserWithStories, index: number) => (
           <div key={user.username} className="user-thumbnail">
             <div className="thumbnail-wrapper">
-              <img
+              <Image
                 src={user.profilePicture}
+                width={60}
+                height={60}
                 alt={user.displayName}
                 onClick={() => startStoryForUser(index)}
               />
