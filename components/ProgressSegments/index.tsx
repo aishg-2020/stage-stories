@@ -9,7 +9,7 @@ type ProgressSegmentsProps = {
 const ProgressBarSegments: React.FC<ProgressSegmentsProps> = ({ segments }) => {
   return (
     <div className="progress-bar-segments">
-      {segments.map((single, i) => (
+      {segments.map((single) => (
         <div
           className="progress-segment-wrapper"
           key={`progress-wrapper-${single.id}`}
