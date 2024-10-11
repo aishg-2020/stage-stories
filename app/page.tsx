@@ -1,0 +1,88 @@
+"use client";
+import { usersWithStories } from "../data"; // Assuming this imports the usersWithStories array
+import StoryViewer from "../components/StoryViewer";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+interface Story {
+  id: number;
+  imageUrl: string;
+}
+
+interface UserWithStories {
+  username: string;
+  displayName: string;
+  profilePicture: string;
+  stories: Story[];
+}
+
+export default function Home() {
+  const [currentUserIndex, setCurrentUserIndex] = useState<number | null>(null);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      router.push("/not-supported");
+    }
+  }, [router]);
+
+  const startStoryForUser = (userIndex: number) => {
+    setCurrentUserIndex(userIndex);
+    setCurrentStoryIndex(0);
+  };
+
+  const moveToNextUser = () => {
+    if (
+      currentUserIndex !== null &&
+      currentUserIndex < usersWithStories.length - 1
+    ) {
+      setCurrentUserIndex(currentUserIndex + 1);
+      setCurrentStoryIndex(0);
+    } else {
+      setCurrentUserIndex(null);
+    }
+  };
+  const moveToPreviousUser = () => {
+    if (currentUserIndex !== null && currentUserIndex > 0) {
+      setCurrentUserIndex(currentUserIndex - 1);
+      setCurrentStoryIndex(0);
+    } else {
+      setCurrentUserIndex(null);
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="users-list">
+        {usersWithStories.map((user: UserWithStories, index: number) => (
+          <div key={user.username} className="user-thumbnail">
+            <div className="thumbnail-wrapper">
+              <img
+                src={user.profilePicture}
+                alt={user.displayName}
+                onClick={() => startStoryForUser(index)}
+              />
+            </div>
+            <p className="username">{user.username}</p>
+          </div>
+        ))}
+      </div>
+
+      {currentUserIndex !== null && (
+        <StoryViewer
+          key={usersWithStories[currentUserIndex].username}
+          stories={usersWithStories[currentUserIndex].stories}
+          currentStory={currentStoryIndex}
+          setCurrentStory={setCurrentStoryIndex}
+          userDisplayName={usersWithStories[currentUserIndex].displayName}
+          userProfilePicture={usersWithStories[currentUserIndex].profilePicture}
+          setCurrentUserIndex={setCurrentUserIndex}
+          moveToNextUser={moveToNextUser}
+          moveToPreviousUser={moveToPreviousUser}
+        />
+      )}
+    </div>
+  );
+}

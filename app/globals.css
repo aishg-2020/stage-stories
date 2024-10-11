@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+/* Horizontal Scrollable Stories List */
+.users-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 20px;
+  width: -webkit-fill-available;
+}
+
+.user-thumbnail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  .thumbnail-wrapper {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(245, 245, 245);
+  }
+  img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+  }
+}
+
+.username {
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+  color: rgb(115, 115, 115);
+}
+.story-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-image {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.story-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+}
+
+.story-nav.prev {
+  left: 0;
+}
+
+.story-nav.next {
+  right: 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+}
+.progress-bar-segments {
+  display: flex;
+  gap: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 100;
+  width: 100%;
+}
+
+.progress-segment-wrapper {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.story-info {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between the profile picture and the user info */
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* Makes the image rounded */
+  object-fit: cover; /* Ensures the image covers the circle */
+  border: 2px solid #ddd; /* Optional: Adds a border around the profile picture */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+.time-ago {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.close-icon {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  z-index: 100;
+}
