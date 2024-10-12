@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stage Stories 
+
+## Deployment
+
+[Live Application](https://stage-stories-new.vercel.app/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Make sure you have the following installed on your machine:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Node.js](https://nodejs.org/) (v16.x or higher)
+- [npm](https://www.npmjs.com/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/aishg-2020/stage-stories
+   cd stage-stories
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Running the Application    
 
-## Deploy on Vercel
+    ```bash
+    npm run dev
+    The application will be available at http://localhost:3000.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Running Playwright Tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npx playwright test --ui
+
+### Building for Production
+
+1. To create a production build:
+
+    ```bash
+    npm run build
+
+2. After the build is successful, you can start the server in production mode:
+
+    ```bash
+    npm run start
+
+## Design and architecture
+### Tech stack
+* **Next.js (TypeScript)**: Chosen for its built-in features like server-side rendering (SSR) and static site generation (SSG), which help in optimizing performance and SEO.
+* **TypeScript**: Using TypeScript enhances code quality and maintainability with static type checking.
+* **CSS**: Plain CSS is used for styling to avoid the overhead of external libraries and ensure faster load times.
+* **Playwright**: Playwright offers cross-browser testing, automatic waits, parallel execution, network interception, and modern web feature support, enhancing reliability and speed in web application testing.
+
+### Performance And Scalability
+* **Minimal External Dependencies**: I avoided using any external libraries to keep the bundle size small, thus improving both performance and loading times.
+* **Modular Type Definitions**: I've maintained a single types file that organizes the types in a centralized location. This ensures easy maintenance and scalability when the codebase grows.
+* **Component-Based Architecture**: The app follows a component-based architecture, making it easier to extend and scale.
+* **Build Optimizations**: Using Next.js's built-in build optimizations to handle both client and server bundles efficiently.
+
+

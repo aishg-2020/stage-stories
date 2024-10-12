@@ -1,11 +1,8 @@
+import { StoryInfoProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 
-interface StoryInfoProps {
-  profilePicture: string;
-  userName: string;
-  timeAgo: string;
-}
+
 
 const StoryInfo: React.FC<StoryInfoProps> = ({
   profilePicture,

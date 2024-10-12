@@ -3,22 +3,8 @@ import ProgressBarSegments from "../ProgressSegments";
 import StoryInfo from "../StoryInfo";
 import Image from "next/image";
 import ImageViewer from "../ImageViewer";
+import { StoryViewerProps } from "@/types";
 
-interface Story {
-  id: number;
-  imageUrl: string;
-}
-
-interface StoryViewerProps {
-  stories: Story[];
-  currentStory: number;
-  setCurrentStory: (index: number) => void;
-  userDisplayName: string;
-  moveToNextUser: () => void;
-  moveToPreviousUser: () => void;
-  userProfilePicture: string;
-  setCurrentUserIndex: (index: number | null) => void;
-}
 
 const StoryViewer: React.FC<StoryViewerProps> = ({
   stories,

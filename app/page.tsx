@@ -1,21 +1,12 @@
 "use client";
-import { usersWithStories } from "../data"; // Assuming this imports the usersWithStories array
+import { usersWithStories } from "../data"; 
 import StoryViewer from "../components/StoryViewer";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { UserWithStories } from "@/types";
 
-interface Story {
-  id: number;
-  imageUrl: string;
-}
 
-interface UserWithStories {
-  username: string;
-  displayName: string;
-  profilePicture: string;
-  stories: Story[];
-}
 
 export default function Home() {
   const [currentUserIndex, setCurrentUserIndex] = useState<number | null>(null);

@@ -68,15 +68,16 @@ body {
   justify-content: center;
   align-items: center;
   border: var(--thumbnail-border-width) solid var(--thumbnail-border-color);
+  img {
+    width: calc(var(--thumbnail-size) - var(--thumbnail-border-width) * 2);
+    height: calc(var(--thumbnail-size) - var(--thumbnail-border-width) * 2);
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+  }
+  
 }
 
-img {
-  width: calc(var(--thumbnail-size) - var(--thumbnail-border-width) * 2);
-  height: calc(var(--thumbnail-size) - var(--thumbnail-border-width) * 2);
-  border-radius: 50%;
-  cursor: pointer;
-  object-fit: cover;
-}
 
 .username {
   text-align: center;
@@ -183,7 +184,7 @@ img {
 
 .close-icon {
   position: absolute;
-  top: var(--space-small);
+  top: var(--space-medium);
   right: var(--space-medium);
   z-index: 100;
   width: 24px;

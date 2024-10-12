@@ -1,12 +1,7 @@
+import { ImageViewerProps } from "@/types";
 import { useEffect, useState } from "react";
 
-interface ImageViewerProps {
-  imageUrl: string;
-  prevStory: () => void;
-  nextStory: () => void;
-  handleMouseDown: () => void;
-  handleMouseUp: () => void;
-}
+
 
 const ImageViewer: React.FC<ImageViewerProps> = ({
   imageUrl,
