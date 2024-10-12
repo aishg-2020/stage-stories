@@ -56,6 +56,9 @@ export default function Home() {
 
   return (
     <div className="container">
+      <div className="page-title">
+        Stage Stories
+      </div>
       <div className="users-list">
         {usersWithStories.map((user: UserWithStories, index: number) => (
           <div key={user.username} className="user-thumbnail">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 interface ImageViewerProps {
   imageUrl: string;
@@ -16,6 +16,9 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   handleMouseUp,
 }) => {
   const [loading, setLoading] = useState(true);
+  const handleContextMenu = (e: React.MouseEvent<HTMLImageElement>) => {
+    e.preventDefault();
+  };
 
   useEffect(() => {
     const img = new Image();
@@ -42,6 +45,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         <div
           className="story-image"
           style={{ backgroundImage: `url(${imageUrl})` }}
+          onContextMenu={handleContextMenu}
           onTouchStart={handleMouseDown}
           onTouchEnd={handleMouseUp}
         >
