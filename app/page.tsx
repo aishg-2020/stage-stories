@@ -1,24 +1,13 @@
 "use client";
-import { usersWithStories } from "../data"; 
+import { usersWithStories } from "../data";
 import StoryViewer from "../components/StoryViewer";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { UserWithStories } from "@/types";
-
-
 
 export default function Home() {
   const [currentUserIndex, setCurrentUserIndex] = useState<number | null>(null);
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
-  const router = useRouter();
-
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    if (!isMobile) {
-      router.push("/not-supported");
-    }
-  }, [router]);
 
   const startStoryForUser = (userIndex: number) => {
     setCurrentUserIndex(userIndex);
@@ -47,9 +36,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <div className="page-title">
-        Stage Stories
-      </div>
+      <div className="page-title">Stage Stories</div>
       <div className="users-list">
         {usersWithStories.map((user: UserWithStories, index: number) => (
           <div key={user.username} className="user-thumbnail">
